@@ -19,7 +19,9 @@ var slideshow =
 		}
 		else
 		{
-			console.log("End of Slideshow");
+			this.pause();
+			return "End of Slideshow";
+			// this.pause();
 			
 		}
 	},
@@ -41,15 +43,65 @@ var slideshow =
 	getCurrentPhoto : function()
 	{
 	   return this.photoList[this.currentPhotoIndex];
-	}
+	},
 
-}
-// console.log (slideshow.photoList[2]);
-console.log(slideshow.getCurrentPhoto());
-console.log(slideshow.nextPhoto());
-console.log(slideshow.nextPhoto());
-console.log(slideshow.nextPhoto());
-console.log(slideshow.nextPhoto());
-console.log(slideshow.prevPhoto());
-console.log(slideshow.prevPhoto());
-console.log(slideshow.prevPhoto());
+
+// Create an empty property named playInterval
+    playInterval :null,
+
+
+// A play() function that moves to the next photo ever 2000ms until the end.
+    play:function()
+    {
+       var self=this;	
+	   this.playInterval = setInterval(function(){
+	   	return console.log(self.nextPhoto());
+	   },2000);
+ 		
+    },
+
+// A pause() function that stops the slideshow
+
+    pause: function()
+    {
+        clearInterval(this.playInterval);
+    } 
+
+};
+
+slideshow.play();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
